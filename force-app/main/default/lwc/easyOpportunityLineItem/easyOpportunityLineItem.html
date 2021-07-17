@@ -1,0 +1,63 @@
+<template>
+    <lightning-card title="Easy Opportunity Product" icon-name="custom:custom98">
+        <br>
+
+        <div class="slds-p-horizontal_small">
+            <h4 class="slds-text-heading_small slds-m-bottom_small">
+                <b>Product Information</b>
+            </h4>
+            <lightning-input type="search" 
+                            onchange={handleKeyChange} 
+                            class="slds-m-bottom_small" 
+                            label="Search"
+                            value={searchKey}>
+            </lightning-input>
+            <lightning-datatable key-field="Id" 
+                                 data={tableProductDataShow} 
+                                 columns={tableProductColumn}
+                                 sorted-by={sortedBy}
+                                 hide-checkbox-column
+                                 onrowaction={rowMethod}>
+            </lightning-datatable>
+            </br>
+            <lightning-layout horizontal-align="space">
+                <lightning-layout-item flexibility="auto">
+                    <lightning-button label="Previous" 
+                                    icon-name="utility:chevronleft" 
+                                    onclick={previousHandler}>
+                    </lightning-button>
+                </lightning-layout-item>
+                <lightning-layout-item flexibility="auto">
+                    Page {page} of {totalPage}
+                </lightning-layout-item>
+                <lightning-layout-item flexibility="auto">
+                    <lightning-button label="Next" 
+                                    icon-name="utility:chevronright" 
+                                    icon-position="right"
+                                    onclick={nextHandler}>
+                    </lightning-button>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+        
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <div class="slds-p-horizontal_small">
+            <h3 class="slds-text-heading_small slds-m-bottom_medium">
+                <b>Opportunity Items</b>
+            </h3>
+            <lightning-datatable 
+                    data={tableProductLineItemData.data}
+                    columns={tableProductLineItemColumn}
+                    key-field="Id"
+                    onsave={handleSave}
+                    onrowaction={handleDelete}
+                    draft-values={saveDraftValues} 
+                    hide-checkbox-column 
+                    show-row-number-column></lightning-datatable>
+        </div>
+    </lightning-card>
+</template>
