@@ -86,7 +86,7 @@ export default class EasyOpportunityLineItem extends LightningElement {
     @track totalPage = 0;
 
     //get product data
-    @wire(getProducts,  {searchKey: '$searchKey', sortBy: '$sortedBy', sortDirection: '$sortedDirection'})
+    @wire(getProducts,  {opportunityId: '$recordId', searchKey: '$searchKey', sortBy: '$sortedBy', sortDirection: '$sortedDirection'})
     ResponseFromGetProduct({error, data}){
         if(data){
             this.tableProductData = data;
